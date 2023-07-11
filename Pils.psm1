@@ -6,7 +6,7 @@ function WriteLog
         [Parameter(ParameterSetName="Message",Mandatory=$true)][ValidateSet('Information','Warning','Error')]
         [String]$Severity,
         [Parameter(ParameterSetName="CustomMessage",Mandatory=$true)]
-        [Switch]$CustomMessage
+        [String]$CustomMessage
     )
 
     begin 
@@ -64,8 +64,8 @@ function WriteLog
         
         if($CustomMessage)
         {
-            Write-Output "[$DateMessage] $Message
-            "[$DateLog] $Message | Out-File -FilePath $LogFilePath -Append
+            Write-Output "[$DateMessage] $CustomMessage
+            "[$DateLog] $CustomMessage | Out-File -FilePath $LogFilePath -Append
             
         }
     }
